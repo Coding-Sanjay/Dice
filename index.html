@@ -1,0 +1,106 @@
+ <!-- Coding_Sanjay -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice website</title>
+
+    <style>
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: slategrey;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            color: blanchedalmond;
+            background-color: #000;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            color: #000;
+            background-color: transparent;
+            /* border: none; */
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+
+        .anotherMain {
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: transparent;
+            border: 5px solid #000;
+            border-radius: 10px;
+
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            margin-top: 15%;
+            font-size: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <button class="btn">Click me</button>
+    </div>
+
+    <div class="anotherMain">
+        <div class="child">
+            <!-- heading tag -->
+        </div>
+    </div>
+
+    <script>
+
+        const buttonTag = document.querySelector('.btn');
+ 
+        function changeNum() {
+
+            let randomNum = Math.floor(Math.random() * 6);
+            const newE = document.createElement('h1');
+
+            const selectorDiv = document.querySelector('.child');
+
+            newE.textContent = randomNum;
+
+            selectorDiv.innerHTML = '';
+
+            if (randomNum !== 0) {
+                selectorDiv.appendChild(newE);
+            }
+            else {
+               changeNum();
+            }
+
+        }
+
+        buttonTag.onclick = changeNum;
+
+    </script>
+</body> 
+
+</html>
