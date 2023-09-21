@@ -6,10 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dice website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@300&display=swap" rel="stylesheet">
 
     <style>
 
         body {
+            font-family: 'Rokkitt', serif;
             padding: 0;
             margin: 0;
             background-color: slategrey;
@@ -18,6 +22,7 @@
         .main {
             display: flex;
             justify-content: center;
+
         }
 
         .btn {
@@ -32,73 +37,123 @@
         .btn:hover {
             color: #000;
             background-color: transparent;
-            /* border: none; */
             border: 2px solid #000;
             cursor: pointer;
         }
 
         .anotherMain {
-            height: 50vh;
+            height: 40vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .child {
+            position: relative;
             width: 100px;
             height: 100px;
-            background-color: transparent;
-            border: 5px solid #000;
+            background-color: #005099;
+            border: 2px solid #000;
             border-radius: 10px;
+            transition-duration: 2.1s;
 
+        }
+
+        .child2 {
+            position: absolute;
         }
 
         h1 {
             margin: 0;
             padding: 0;
             text-align: center;
+            color: #fff;
             margin-top: 15%;
             font-size: 4rem;
         }
+
+        .createdBy {
+            display: flex;
+            width: 99vw;
+            height: 30vh;
+            justify-content: end;
+            align-items: end;
+        }
+
+        .createdBy h3 {
+            padding: 5%;
+        }
+
+        .text h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: auto;
+            
+        }
+
     </style>
 </head>
 <body>
 
+    <div class="text">
+        <h2>DICE</h2>
+    </div>
+
     <div class="main">
-        <button class="btn">Click me</button>
+        <button class="btn">Roll the dice</button>
     </div>
 
     <div class="anotherMain">
         <div class="child">
             <!-- heading tag -->
         </div>
+        <div class="child2">
+
+        </div>
     </div>
 
+    <div class="createdBy">
+        <h3> - Sanjay kumar</h3>
+    </div>
+ 
     <script>
 
         const buttonTag = document.querySelector('.btn');
- 
+        let degree = 0;
+
         function changeNum() {
 
-            let randomNum = Math.floor(Math.random() * 7);
-            const newE = document.createElement('h1');
+            setTimeout(function() {
+                let randomNum = Math.floor(Math.random() * 7);
+                const newE = document.createElement('h1');
 
-            const selectorDiv = document.querySelector('.child');
+                const selectorDiv = document.querySelector('.child2');
 
-            newE.textContent = randomNum;
+                newE.textContent = randomNum;
 
-            selectorDiv.innerHTML = '';
+                if (randomNum !== 0) {
+                    selectorDiv.appendChild(newE);
+                }
+                else {
+                changeNum();
+                }
+            }, 900);
 
-            if (randomNum !== 0) {
-                selectorDiv.appendChild(newE);
-            }
-            else {
-               changeNum();
-            }
-
+            rotate();
+          
         }
 
         buttonTag.onclick = changeNum;
+
+        function rotate() {
+
+            document.querySelector('.child2').innerHTML = '';
+            degree += 180;
+
+            let finalDegree = 'rotate('+ degree + 'deg)'
+            document.querySelector('.child').style.transform = finalDegree;
+        }
 
     </script>
 </body> 
